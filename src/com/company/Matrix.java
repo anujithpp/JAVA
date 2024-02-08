@@ -150,6 +150,8 @@ public class Matrix {
             }
         }                                   //setting elements of m2
 
+        System.out.println();
+
         m1.add(m2);                                                         //added matrix objects m1 and m2
         m1.subtract(m2);                                                    //subtracted m2 from m1
         m1.multiply(m2);                                                    //multiply m1 with m2
@@ -157,6 +159,7 @@ public class Matrix {
         System.out.println("Transpose of first matrix");
         m1.transpose();                                                     //Transpose of first matrix
 
+        System.out.println();
         System.out.println("Transpose of second matrix");
         m2.transpose();                                                     //Transpose of second matrix
 
