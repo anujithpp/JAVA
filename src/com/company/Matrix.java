@@ -47,6 +47,7 @@ public class Matrix {
                 System.out.println();
             }
         }
+        System.out.println();
     }
 
     public void subtract(Matrix mat2) {
@@ -67,6 +68,35 @@ public class Matrix {
                 System.out.println();
             }
         }
+        System.out.println();
+    }
+
+    public void multiply(Matrix mat2) {
+        if (this.columns != mat2.rows) {
+            System.out.println("Number of columns in the first matrix must be equal to the number of rows in the second matrix.");
+            return; // Exit the method if multiplication is not possible
+        }
+
+        Matrix product = new Matrix(this.rows, mat2.columns, 0.0);
+
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < mat2.columns; j++) {
+                double sum = 0;
+                for (int k = 0; k < this.columns; k++) {
+                    sum += this.data[i][k] * mat2.data[k][j];
+                }
+                product.data[i][j] = sum;
+            }
+        }
+
+        System.out.println("Result of multiplication:");
+        for (int i = 0; i < product.rows; i++) {
+            for (int j = 0; j < product.columns; j++) {
+                System.out.print(product.data[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {                                     //MAIN
@@ -104,7 +134,7 @@ public class Matrix {
 
         m1.add(m2);                                                         //added matrix objects m1 and m2
         m1.subtract(m2);                                                    //subtracted m2 from m1
-
+        m1.multiply(m2);                                                    //multiply m1 with m2
 
     }
 }
