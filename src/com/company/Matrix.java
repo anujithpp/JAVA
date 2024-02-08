@@ -99,6 +99,24 @@ public class Matrix {
         System.out.println();
     }
 
+    public void transpose() {
+        Matrix transposed = new Matrix(columns, rows, 0.0); // Create a new matrix with swapped dimensions
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                transposed.data[j][i] = this.data[i][j]; // Swap rows and columns
+            }
+        }
+
+        for (int i = 0; i < transposed.rows; i++) {
+            for (int j = 0; j < transposed.columns; j++) {
+                System.out.print(transposed.getElements(i, j) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
     public static void main(String[] args) {                                     //MAIN
         int a, b, c, d;
         double v;
@@ -135,6 +153,12 @@ public class Matrix {
         m1.add(m2);                                                         //added matrix objects m1 and m2
         m1.subtract(m2);                                                    //subtracted m2 from m1
         m1.multiply(m2);                                                    //multiply m1 with m2
+
+        System.out.println("Transpose of first matrix");
+        m1.transpose();                                                     //Transpose of first matrix
+
+        System.out.println("Transpose of second matrix");
+        m2.transpose();                                                     //Transpose of second matrix
 
     }
 }
