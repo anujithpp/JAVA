@@ -116,6 +116,16 @@ public class Matrix {
         }
     }
 
+    public String tostring() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                sb.append(data[i][j]);
+            }
+        }
+        return sb.toString();
+    }
+
 
     public static void main(String[] args) {                                     //MAIN
         int a, b, c, d;
@@ -162,6 +172,13 @@ public class Matrix {
         System.out.println();
         System.out.println("Transpose of second matrix");
         m2.transpose();                                                     //Transpose of second matrix
+
+        System.out.println();
+        System.out.println("First matrix as a string: ");
+        System.out.println(m1.tostring());                                  //printing matrix m1 as a string
+        System.out.println();
+        System.out.println("Second matrix as a string: ");
+        System.out.println(m2.tostring());                                  //printing matrix m2 as a string
 
     }
 }
