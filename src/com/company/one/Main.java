@@ -1,9 +1,13 @@
-package src.com.company;
+package src.com.company.one;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {                                     //MAIN
+
+        System.out.println("QUESTION---1");
+
+
         int a, b, c, d;
         double v;
         Scanner sc = new Scanner(System.in);
@@ -55,6 +59,13 @@ public class Main {
         System.out.println();
         System.out.println("Second matrix as a string: ");
         System.out.println(m2.tostring());                                  //printing matrix m2 as a string
+        System.out.println();
+
+        //Code for question number 2 Cycle 1
+
+        System.out.println("Question----2");
+        System.out.println("Enter dimension of matrix separated by space: ");
+        String dimension = sc.next();
 
     }
 }

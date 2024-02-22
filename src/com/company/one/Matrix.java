@@ -1,8 +1,7 @@
-package src.com.company;
-
-import java.util.Scanner;
+package src.com.company.one;
 
 public class Matrix {
+    //Question 1 variables and functions
     private int rows;
     private int columns;
     private double[][] data;
@@ -125,5 +124,19 @@ public class Matrix {
         }
         return sb.toString();
     }
+
+    //Question 2 variables and functions
+
+    public static int[] stringToArray(String str) {
+        String[] numberString = str.split(" "); // Split the string into an array of strings
+        int[] num = new int[numberString.length]; // Create an array to store integers
+
+        for (int i = 0; i < numberString.length; i++) {
+            num[i] = Integer.parseInt(numberString[i]); // Parse each string to an integer
+        }
+
+        return num; // Return the array of integers
+    }
+
 
 }
