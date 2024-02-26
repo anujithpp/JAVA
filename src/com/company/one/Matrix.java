@@ -138,5 +138,12 @@ public class Matrix {
         return num; // Return the array of integers
     }
 
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
 
 }
