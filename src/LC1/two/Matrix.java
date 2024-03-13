@@ -1,5 +1,5 @@
-package src.com.company.two;
-import java.util.Scanner;
+package src.LC1.two;
+
 public class Matrix {
     public int rows;
     public int columns;

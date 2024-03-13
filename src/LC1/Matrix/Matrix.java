@@ -1,4 +1,4 @@
-package src.com.company.one;
+package src.LC1.Matrix;
 
 public class Matrix {
     //Question 1 variables and functions

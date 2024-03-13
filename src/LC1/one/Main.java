@@ -1,4 +1,6 @@
-package src.com.company.one;
+package src.LC1.one;
+
+import src.LC1.Matrix.Matrix;
 
 import java.util.Scanner;
 
