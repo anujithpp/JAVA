@@ -1,34 +1,45 @@
-package src.com.company.tictactoe;
+package src.LC2.two;
 
 import java.util.Scanner;
 
-public class TicTacToeGame {
+public class TicTacToe {
+    private char[][] board;
+    private char currentPlayer;
 
-    public static void main(String[] args) {
+    public TicTacToe() {
+        board = new char[3][3];
+        currentPlayer = 'X';
+        initializeBoard();
+    }
+
+    private void initializeBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = '-';
+            }
+        }
+    }
+
+    public void playGame() {
         Scanner scanner = new Scanner(System.in);
 
-        char[][] board = new char[3][3];
-        char currentPlayer = 'X';
-
-        initializeBoard(board);
-
         while (true) {
-            printBoard(board);
+            printBoard();
             System.out.println("Player " + currentPlayer + ", enter row (1-3) and column (1-3) separated by space: ");
             int row = scanner.nextInt() - 1;
             int col = scanner.nextInt() - 1;
 
-            if (isValidMove(board, row, col)) {
+            if (isValidMove(row, col)) {
                 board[row][col] = currentPlayer;
 
-                if (checkWin(board, currentPlayer)) {
-                    printBoard(board);
+                if (checkWin()) {
+                    printBoard();
                     System.out.println("Player " + currentPlayer + " wins!");
                     break;
                 }
 
-                if (isBoardFull(board)) {
-                    printBoard(board);
+                if (isBoardFull()) {
+                    printBoard();
                     System.out.println("It's a tie!");
                     break;
                 }
@@ -42,15 +53,7 @@ public class TicTacToeGame {
         scanner.close();
     }
 
-    private static void initializeBoard(char[][] board) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                board[i][j] = '-';
-            }
-        }
-    }
-
-    private static void printBoard(char[][] board) {
+    private void printBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.print(board[i][j] + " ");
@@ -59,24 +62,24 @@ public class TicTacToeGame {
         }
     }
 
-    private static boolean isValidMove(char[][] board, int row, int col) {
+    private boolean isValidMove(int row, int col) {
         return (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == '-');
     }
 
-    private static boolean checkWin(char[][] board, char player) {
+    private boolean checkWin() {
         for (int i = 0; i < 3; i++) {
-            if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
+            if (board[i][0] == currentPlayer && board[i][1] == currentPlayer && board[i][2] == currentPlayer) {
                 return true; // Check rows
             }
-            if (board[0][i] == player && board[1][i] == player && board[2][i] == player) {
+            if (board[0][i] == currentPlayer && board[1][i] == currentPlayer && board[2][i] == currentPlayer) {
                 return true; // Check columns
             }
         }
-        return (board[0][0] == player && board[1][1] == player && board[2][2] == player) || // Check diagonals
-                (board[0][2] == player && board[1][1] == player && board[2][0] == player);
+        return (board[0][0] == currentPlayer && board[1][1] == currentPlayer && board[2][2] == currentPlayer) || // Check diagonals
+                (board[0][2] == currentPlayer && board[1][1] == currentPlayer && board[2][0] == currentPlayer);
     }
 
-    private static boolean isBoardFull(char[][] board) {
+    private boolean isBoardFull() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == '-') {

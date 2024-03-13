@@ -138,6 +138,16 @@ public class Matrix {
         return num; // Return the array of integers
     }
 
+    public void displayMatrix() {
+        System.out.println("Square Matrix:");
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
+                System.out.print(getElements(i, j) + "\t");
+            }
+            System.out.println();
+        }
+    }
+
     public int getRows() {
         return rows;
     }
