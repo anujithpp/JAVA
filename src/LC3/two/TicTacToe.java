@@ -1,6 +1,12 @@
-package src.LC2.two;
+package src.LC3.two;
 
 import java.util.Scanner;
+
+class InvalidMoveException extends Exception {
+    public InvalidMoveException(String message) {
+        super(message);
+    }
+}
 
 public class TicTacToe {
     private final char[][] board;
@@ -29,24 +35,28 @@ public class TicTacToe {
             int row = scanner.nextInt() - 1;
             int col = scanner.nextInt() - 1;
 
-            if (isValidMove(row, col)) {
-                board[row][col] = currentPlayer;
+            try {
+                if (isValidMove(row, col)) {
+                    board[row][col] = currentPlayer;
 
-                if (checkWin()) {
-                    printBoard();
-                    System.out.println("Player " + currentPlayer + " wins!");
-                    break;
+                    if (checkWin()) {
+                        printBoard();
+                        System.out.println("Player " + currentPlayer + " wins!");
+                        break;
+                    }
+
+                    if (isBoardFull()) {
+                        printBoard();
+                        System.out.println("It's a tie!");
+                        break;
+                    }
+
+                    currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+                } else {
+                    throw new InvalidMoveException("Invalid move! Please enter row and column within range (1-3).");
                 }
-
-                if (isBoardFull()) {
-                    printBoard();
-                    System.out.println("It's a tie!");
-                    break;
-                }
-
-                currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
-            } else {
-                System.out.println("Invalid move! Try again.");
+            } catch (InvalidMoveException e) {
+                System.out.println(e.getMessage());
             }
         }
 

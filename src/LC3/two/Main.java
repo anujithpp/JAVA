@@ -1,8 +1,6 @@
-package src.LC2.two;
+package src.LC3.two;
 
-import src.LC2.two.TicTacToe;
-
-public class TicTacToeGame {
+public class Main {
     public static void main(String[] args) {
         TicTacToe game = new TicTacToe();
         game.makeMove();

@@ -1,4 +1,4 @@
-package src.LC2.two;
+package src.LC3.one;
 
 import java.util.Scanner;
 
@@ -29,7 +29,8 @@ public class TicTacToe {
             int row = scanner.nextInt() - 1;
             int col = scanner.nextInt() - 1;
 
-            if (isValidMove(row, col)) {
+            try {
+                validateMove(row, col);
                 board[row][col] = currentPlayer;
 
                 if (checkWin()) {
@@ -45,8 +46,8 @@ public class TicTacToe {
                 }
 
                 currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
-            } else {
-                System.out.println("Invalid move! Try again.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid move! " + e.getMessage());
             }
         }
 
@@ -62,8 +63,13 @@ public class TicTacToe {
         }
     }
 
-    private boolean isValidMove(int row, int col) {
-        return (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == '-');
+    private void validateMove(int row, int col) {
+        if (row < 0 || row >= 3 || col < 0 || col >= 3) {
+            throw new IllegalArgumentException("Row and column values must be within the range of 1-3.");
+        }
+        if (board[row][col] != '-') {
+            throw new IllegalArgumentException("Selected position is already occupied.");
+        }
     }
 
     private boolean checkWin() {
