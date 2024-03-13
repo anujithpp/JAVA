@@ -1,25 +1,21 @@
 package src.LC1.five;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Unique {
     private final int[][] matrix;
     private static int totalMatrices = 0;
-    private final long creationTime;
-    private final String matrixID;
 
     public Unique() {
         Random random = new Random();
         int rows = random.nextInt(10) + 1;
         int cols = random.nextInt(10) + 1;
         matrix = new int[rows][cols];
-        creationTime = System.currentTimeMillis();
-        matrixID = "Matrix_" + ++totalMatrices + "_" + creationTime; // Unique ID with timestamp
-        System.out.println("Matrix with ID " + matrixID + ":");
+        long creationTime = System.currentTimeMillis();
+        String matrixID = "Matrix_" + ++totalMatrices + "_" + creationTime; // Unique ID with timestamp
+        System.out.println("Matrix with Unique ID:  " + matrixID + ":");
         System.out.println();
 
-        Scanner sc = new Scanner(System.in);
         int n = 1000;
 
         for (int i = 0; i < rows; i++) {
@@ -28,6 +24,7 @@ public class Unique {
             }
         }
     }
+
     public void displayMatrix() {
         for (int[] row : matrix) {
             for (int value : row) {
