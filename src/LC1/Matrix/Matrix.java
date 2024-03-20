@@ -28,6 +28,10 @@ public class Matrix {
         return data[rows][columns];
     }  //gets a value of a specific element
 
+    public double[][] getData() {
+        return data;
+    }
+
     public void add(Matrix mat2) {
         if (this.rows != mat2.rows || this.columns != mat2.columns) {
             System.out.println("Both matrices must have the same dimensions to add!");
